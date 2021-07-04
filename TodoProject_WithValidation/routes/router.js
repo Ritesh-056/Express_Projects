@@ -41,7 +41,7 @@ const Todo   = require('./model.js');
     router.get('/',async (req,res)=>{
 
       try{
-        const todo = await Todo.find({"state":"backlog"})
+        const todo = await Todo.find()
         res.json(todo);
 
       }catch(ex){
@@ -53,16 +53,25 @@ const Todo   = require('./model.js');
 
 
 //todo put
-  router.post('/:id',async (req,res) =>{
+  router.put('/:id',async (req,res) =>{
 
     try{
 
       
-      const { error } = todoSchema.validate(req.body, { abortEarly: false })
-      if (error) return res.status(400).send(error.details[0].message)
+      // const { error } = todoSchema.validate(req.body, { abortEarly: false })
+      // if (error) return res.status(400).send(error.details[0].message)
       
       
-      const todo = await Todo.findOneAndUpdate({_id:req.params.id},{$set:req.body},{new: true})
+      const todo = await Todo.findOneAndUpdate({_id:req.params.id},{$set:req.body},{new: true}, (err,data)=>{
+
+
+        if(err){
+
+          console.log(err);
+        }else{
+          res.json(data);
+        }
+      })
     
       //check whether the todo id exists or not
       if(!todo){

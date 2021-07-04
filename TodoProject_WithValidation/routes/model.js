@@ -41,8 +41,3 @@ module.exports = Todo
 
 
 
-// {
-//      "title": "JavaScript DOM research",
-//      "description": "I am very used to JavaScript so I like to do so",
-//      "state":"backlog"
-// }
