@@ -19,11 +19,6 @@ const app = express()
     handleError(error);
   }
 
-
-
-
-
-
 con.on('open',()=>{
 
     console.log("Connected with database")

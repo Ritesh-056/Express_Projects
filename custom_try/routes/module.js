@@ -11,6 +11,7 @@ const mongoose = require('mongoose')
        address : String, 
        gender : Boolean,
        phoneNumber : Number,
+       email:String
 
   });
 
